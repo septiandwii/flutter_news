@@ -1,6 +1,6 @@
 {
-    "name": "flutter_casir",
-    "short_name": "flutter_casir",
+    "name": "flutter_news",
+    "short_name": "flutter_news",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

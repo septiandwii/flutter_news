@@ -1,4 +1,4 @@
-package com.example.flutter_casir
+package com.example.flutter_news
 
 import io.flutter.embedding.android.FlutterActivity
 

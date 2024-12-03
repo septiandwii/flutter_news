@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_casir/pages/home.dart';
+import 'package:flutter_news/pages/home.dart';
 
 void main() {
   runApp(const MyApp());
