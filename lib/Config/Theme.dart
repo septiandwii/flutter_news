@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_casir/Config/Colors.dart';
 
-
 var lightTheme = ThemeData(
   useMaterial3: true,
   inputDecorationTheme: const InputDecorationTheme(
@@ -22,10 +21,10 @@ var lightTheme = ThemeData(
       fontWeight: FontWeight.w500,
     ),
   ),
-  colorScheme: ColorScheme.light(
+  colorScheme: const ColorScheme.light(
     brightness: Brightness.light,
-    background: lightBgColor,
-    onBackground: lightFontColor,
+    surface: lightBgColor,
+    onSurface: lightFontColor,
     primaryContainer: lightDivColor,
     onPrimaryContainer: lightFontColor,
     secondaryContainer: lightLableColor,
@@ -56,13 +55,13 @@ var lightTheme = ThemeData(
       color: lightFontColor,
       fontWeight: FontWeight.w500,
     ),
-      bodyMedium: TextStyle(
+    bodyMedium: TextStyle(
       fontFamily: "Poppins",
       fontSize: 15,
       color: lightFontColor,
       fontWeight: FontWeight.w500,
     ),
-      bodySmall: TextStyle(
+    bodySmall: TextStyle(
       fontFamily: "Poppins",
       fontSize: 13,
       color: lightFontColor,
@@ -91,10 +90,10 @@ var darkTheme = ThemeData(
       fontWeight: FontWeight.w500,
     ),
   ),
-  colorScheme: ColorScheme.light(
+  colorScheme: const ColorScheme.light(
     brightness: Brightness.light,
-    background: darkBgColor,
-    onBackground: darkFontColor,
+    surface: darkBgColor,
+    onSurface: darkFontColor,
     primaryContainer: darkDivColor,
     onPrimaryContainer: darkFontColor,
     secondaryContainer: darkLableColor,
@@ -125,13 +124,13 @@ var darkTheme = ThemeData(
       color: darkFontColor,
       fontWeight: FontWeight.w500,
     ),
-      bodyMedium: TextStyle(
+    bodyMedium: TextStyle(
       fontFamily: "Poppins",
       fontSize: 15,
       color: darkFontColor,
       fontWeight: FontWeight.w500,
     ),
-      bodySmall: TextStyle(
+    bodySmall: TextStyle(
       fontFamily: "Poppins",
       fontSize: 13,
       color: darkFontColor,

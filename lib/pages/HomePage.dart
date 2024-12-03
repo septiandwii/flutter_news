@@ -7,10 +7,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("NEWS"),
+        title: Text(
+          "NEWS",
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
       ),
-      body: Column(
-        children: [],
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: const Column(
+          children: [
+            Text("Hottest News"),
+            Text(
+              "See All", 
+              style: Theme.of(context).textTheme.labelSmall,)
+
+          ],
+        ),
       ),
     );
   }
