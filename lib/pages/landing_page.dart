@@ -20,7 +20,7 @@ class _LandingPageState extends State<LandingPage> {
                 borderRadius: BorderRadius.circular(30),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
-                child: Image.asset("images/scince.jpg",
+                child: Image.asset("images/science.jpg",
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height/1.7,
                 fit: BoxFit.cover,
