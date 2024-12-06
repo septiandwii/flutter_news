@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Breaking News!", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 24.0, fontFamily: 'Pacifico'),),
+                        Text("Breaking News!", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0,),),
                         Text("View All", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 16.0),),
                       ],
                     ),
