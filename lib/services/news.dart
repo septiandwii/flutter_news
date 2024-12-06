@@ -1,14 +1,15 @@
 import 'dart:convert';
 
-import 'package:flutter_news/models/slider_model.dart';
+import 'package:flutter_news/models/article_model.dart';
 import 'package:http/http.dart' as http;
 
 
-class Sliders {
-    List<sliderModel> sliders=[];
 
-    Future<void> getSlider()async{
-        String url="https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=d2fd3db244fe45cb8a37d328556e767c";
+class News {
+    List<ArticleModel> news=[];
+
+    Future<void> getNews()async{
+        String url="https://newsapi.org/v2/everything?q=tesla&from=2024-11-06&sortBy=publishedAt&apiKey=d2fd3db244fe45cb8a37d328556e767c";
         var response= await http.get(Uri.parse(url));
 
         var jsonData= jsonDecode(response.body);
@@ -16,7 +17,7 @@ class Sliders {
         if(jsonData['status']=='ok'){
             jsonData["articles"].forEach((element){
             if(element["urlToImage"] !=null && element['description'] !=null){
-                sliderModel slidermodel= sliderModel(
+                ArticleModel articleModel= ArticleModel(
                     title: element["title"],
                     description: element["description"],
                     url: element["url"],
@@ -25,7 +26,7 @@ class Sliders {
                     author: element["author"]
                 );
 
-                sliders.add(slidermodel);
+                news.add(articleModel);
             }
             });
         }
