@@ -132,6 +132,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   SizedBox(height: 10.0,),
+                  
                   GestureDetector(
                     onTap: (){
 
@@ -174,7 +175,7 @@ class _HomeState extends State<Home> {
                                   child: CachedNetworkImage(
                                     height: 120, 
                                     width: MediaQuery.of(context).size.width, 
-                                    imageUrl: image,  
+                                    imageUrl: image,
                                     fit: BoxFit.cover,
                                    ),
                                  ),
@@ -199,17 +200,16 @@ class _HomeState extends State<Home> {
                         child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                            Container(
-                              child: ClipRRect(
+
+                              ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: CachedNetworkImage(
                                   height: 120, 
-                                  width: MediaQuery.of(context).size.width, imageUrl: Image, 
+                                  width: MediaQuery.of(context).size.width, imageUrl: image, 
                                   fit: BoxFit.cover,
-                            
                                 ),
                               ),
-                            ),
+
 
                             SizedBox(width: 8.0,),
                             Column(
@@ -344,73 +344,70 @@ class BlogTile extends StatelessWidget {
   BlogTile({required this.desc, required this.imageUrl, required this.title, required this.url});
 
   @override
-Widget build(BuildContext context) {
-  return GestureDetector(
-    onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>ArticleView(blogUrl: url,)));
-    },
-   child: Container(
-    margin: EdgeInsets.only(bottom: 10.0),
-     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: Material(
-        elevation: 3.0,
-        borderRadius: BorderRadius.circular(10),
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url,)));
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 10.0),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: CachedNetworkImage(
-                    imageUrl: imageUrl,
-                    height: 120,
-                    width: 120,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 8.0,
-              ),
-              Column(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Material(
+            elevation: 3.0,
+            borderRadius: BorderRadius.circular(10),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width / 1.7,
-                    child: Text(
-                      title,
-                      maxLines: 2,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 17.0,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl, // Pastikan ini adalah URL yang valid
+                        height: 120,
+                        width: 120,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 7.0,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 1.7,
-                    child: Text(
-                      desc,
-                      maxLines: 3,
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15.0,
+                  SizedBox(width: 8.0),
+                  Column(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width / 1.7,
+                        child: Text(
+                          title,
+                          maxLines: 2,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 17.0,
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(height: 7.0),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 1.7,
+                        child: Text(
+                          desc,
+                          maxLines: 3,
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.0,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),
-       ),
-   )
-  );
-}}
+    );
+  }
+}
