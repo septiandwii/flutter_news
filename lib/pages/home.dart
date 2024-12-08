@@ -6,6 +6,7 @@ import 'package:flutter_news/models/article_model.dart';
 import 'package:flutter_news/models/category_model.dart';
 import 'package:flutter_news/models/slider_model.dart';
 import 'package:flutter_news/pages/article_view.dart';
+import 'package:flutter_news/pages/category_news.dart';
 import 'package:flutter_news/services/data.dart';
 import 'package:flutter_news/services/news.dart';
 import 'package:flutter_news/services/slider_data.dart';
@@ -115,7 +116,7 @@ class _HomeState extends State<Home> {
                       height: 20.0,
                     ),
                     CarouselSlider.builder(
-                        itemCount: sliders.length,
+                        itemCount: 5,
                         itemBuilder: (context, index, realIndex) {
                           String? res = sliders[index].urlToImage;
                           String? res1 = sliders[index].title;
@@ -305,16 +306,19 @@ class _HomeState extends State<Home> {
           decoration: BoxDecoration(
               color: Colors.black26,
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20))),
-          child: Text(
+          child: Center(
+            child: Text(
             name,
+            maxLines: 2,
             style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
         )
+      )
       ]));
 
   Widget buildIndicator() => AnimatedSmoothIndicator(
         activeIndex: activeIndex,
-        count: sliders.length,
+        count: 5,
         effect: SlideEffect(dotWidth: 15, dotHeight: 15, activeDotColor: Colors.blue),
       );
 }
@@ -325,8 +329,10 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 16),
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> CategoryNews(name: categoryName)));
+      },
       child: Stack(
         children: [
           ClipRRect(
