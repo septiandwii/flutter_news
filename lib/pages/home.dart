@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/models/article_model.dart';
 import 'package:flutter_news/models/category_model.dart';
 import 'package:flutter_news/models/slider_model.dart';
+import 'package:flutter_news/pages/all_news.dart';
 import 'package:flutter_news/pages/article_view.dart';
 import 'package:flutter_news/pages/category_news.dart';
 import 'package:flutter_news/services/data.dart';
@@ -105,9 +106,14 @@ class _HomeState extends State<Home> {
                               fontSize: 18.0,
                             ),
                           ),
-                          Text(
-                            "View All",
-                            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 16.0),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> AllNews(news: "Breaking",)));
+                            },
+                            child: Text(
+                              "View All",
+                              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 16.0),
+                            ),
                           ),
                         ],
                       ),
@@ -148,9 +154,14 @@ class _HomeState extends State<Home> {
                             "Trending News!",
                             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0),
                           ),
-                          Text(
-                            "View All",
-                            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 16.0),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> AllNews(news: "Trending",)));
+                            },
+                            child: Text(
+                              "View All",
+                              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 16.0),
+                            ),
                           ),
                         ],
                       ),

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news/models/show_category.dart';
+import 'package:flutter_news/pages/article_view.dart';
 import 'package:flutter_news/services/show_category_news.dart';
 
 class CategoryNews extends StatefulWidget {
@@ -42,7 +43,8 @@ class _CategoryNewsState extends State<CategoryNews> {
         elevation: 0.0,
       ),
       body: Container(
-                      child: ListView.builder(
+        margin: EdgeInsets.symmetric(horizontal: 10.0),
+        child: ListView.builder(
                         shrinkWrap: true,
                         physics: ClampingScrollPhysics(),
                         itemCount: categories.length,
@@ -51,6 +53,7 @@ class _CategoryNewsState extends State<CategoryNews> {
                             Image: categories[index].urlToImage!,
                             desc: categories[index].description!,
                             title: categories[index].title!,
+                            url: categories[index].url!,
                           );
                         }),
                     ));
@@ -58,23 +61,41 @@ class _CategoryNewsState extends State<CategoryNews> {
 }
 
 class ShowCategory extends StatelessWidget {
-  String Image, desc, title;
-  ShowCategory({required this.Image, required this.desc, required this.title});
+  String Image, desc, title, url;
+  ShowCategory({required this.Image, required this.desc, required this.title, required this.url});
 
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        CachedNetworkImage(
-          imageUrl: Image, 
-          width: MediaQuery.of(context).size.width, 
-          height: 200, 
-          fit: BoxFit.cover,
-          ),
-          Text(title),
-          Text(desc)
-        ],
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> ArticleView(blogUrl: url)));
+      },
+      child: Container(
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: CachedNetworkImage(
+                imageUrl: Image, 
+                width: MediaQuery.of(context).size.width, 
+                height: 200, 
+                fit: BoxFit.cover,
+              ),
+            ),
+            Text(
+              title,
+              maxLines: 2,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold
+                ),
+              ),
+            Text(desc, maxLines: 3,),
+            SizedBox(height: 20.0,),
+          ],
+        ),
       ),
     );
   }
