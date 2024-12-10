@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news/models/article_model.dart';
@@ -8,9 +6,11 @@ import 'package:flutter_news/models/slider_model.dart';
 import 'package:flutter_news/pages/all_news.dart';
 import 'package:flutter_news/pages/article_view.dart';
 import 'package:flutter_news/pages/category_news.dart';
+import 'package:flutter_news/pages/login.dart';
 import 'package:flutter_news/services/data.dart';
 import 'package:flutter_news/services/news.dart';
 import 'package:flutter_news/services/slider_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -65,6 +65,19 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
+        leading: IconButton(
+          onPressed: () async {
+            final instance = await SharedPreferences.getInstance();
+            instance.setBool("isLogin", false);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            });
+          },
+          icon: const Icon(Icons.logout),
+        ),
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -107,8 +120,13 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> AllNews(news: "Breaking",)));
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AllNews(
+                                            news: "Breaking",
+                                          )));
                             },
                             child: Text(
                               "View All",
@@ -121,7 +139,8 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 20.0,
                     ),
-                    CarouselSlider.builder(
+                    if (sliders.length > 0) ...[
+                      CarouselSlider.builder(
                         itemCount: 5,
                         itemBuilder: (context, index, realIndex) {
                           String? res = sliders[index].urlToImage;
@@ -137,7 +156,9 @@ class _HomeState extends State<Home> {
                               setState(() {
                                 activeIndex = index;
                               });
-                            })),
+                            }),
+                      ),
+                    ],
                     SizedBox(
                       height: 30.0,
                     ),
@@ -155,8 +176,15 @@ class _HomeState extends State<Home> {
                             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0),
                           ),
                           GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> AllNews(news: "Trending",)));
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AllNews(
+                                    news: "Trending",
+                                  ),
+                                ),
+                              );
                             },
                             child: Text(
                               "View All",
@@ -303,28 +331,27 @@ class _HomeState extends State<Home> {
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image(
-            image: NetworkImage(image),
+            image: CachedNetworkImageProvider(image),
             height: 250,
             fit: BoxFit.cover,
             width: MediaQuery.of(context).size.width,
           ),
         ),
         Container(
-          height: 250,
-          padding: EdgeInsets.only(left: 10.0),
-          margin: EdgeInsets.only(top: 170.0),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-              color: Colors.black26,
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20))),
-          child: Center(
-            child: Text(
-            name,
-            maxLines: 2,
-            style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
-          ),
-        )
-      )
+            height: 250,
+            padding: EdgeInsets.only(left: 10.0),
+            margin: EdgeInsets.only(top: 170.0),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                color: Colors.black26,
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20))),
+            child: Center(
+              child: Text(
+                name,
+                maxLines: 2,
+                style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+            ))
       ]));
 
   Widget buildIndicator() => AnimatedSmoothIndicator(
@@ -341,8 +368,8 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> CategoryNews(name: categoryName)));
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryNews(name: categoryName)));
       },
       child: Stack(
         children: [
@@ -356,6 +383,7 @@ class CategoryTile extends StatelessWidget {
             ),
           ),
           Container(
+            margin: EdgeInsets.only(right: 16),
             width: 120,
             height: 70,
             decoration: BoxDecoration(

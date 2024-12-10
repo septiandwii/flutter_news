@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news/models/show_category.dart';
@@ -14,15 +16,16 @@ class CategoryNews extends StatefulWidget {
 
 class _CategoryNewsState extends State<CategoryNews> {
   List<ShowCategoryModel> categories = [];
-  bool _loading=true;
+  bool _loading = true;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getNews();
   }
 
   getNews() async {
+    log(widget.name);
     ShowCategoryNews showCategoryNews = ShowCategoryNews();
     await showCategoryNews.getCategoriesNews(widget.name.toLowerCase());
     categories = showCategoryNews.categories;
@@ -34,29 +37,29 @@ class _CategoryNewsState extends State<CategoryNews> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:Text(
-          widget.name,
+        appBar: AppBar(
+          title: Text(
+            widget.name,
             style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
           ),
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10.0),
-        child: ListView.builder(
-                        shrinkWrap: true,
-                        physics: ClampingScrollPhysics(),
-                        itemCount: categories.length,
-                        itemBuilder: (context, index) {
-                          return ShowCategory(
-                            Image: categories[index].urlToImage!,
-                            desc: categories[index].description!,
-                            title: categories[index].title!,
-                            url: categories[index].url!,
-                          );
-                        }),
-                    ));
+          centerTitle: true,
+          elevation: 0.0,
+        ),
+        body: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10.0),
+          child: ListView.builder(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                return ShowCategory(
+                  Image: categories[index].urlToImage!,
+                  desc: categories[index].description!,
+                  title: categories[index].title!,
+                  url: categories[index].url!,
+                );
+              }),
+        ));
   }
 }
 
@@ -64,12 +67,11 @@ class ShowCategory extends StatelessWidget {
   String Image, desc, title, url;
   ShowCategory({required this.Image, required this.desc, required this.title, required this.url});
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> ArticleView(blogUrl: url)));
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url)));
       },
       child: Container(
         child: Column(
@@ -77,23 +79,24 @@ class ShowCategory extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: CachedNetworkImage(
-                imageUrl: Image, 
-                width: MediaQuery.of(context).size.width, 
-                height: 200, 
+                imageUrl: Image,
+                width: MediaQuery.of(context).size.width,
+                height: 200,
                 fit: BoxFit.cover,
               ),
             ),
             Text(
               title,
               maxLines: 2,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold
-                ),
-              ),
-            Text(desc, maxLines: 3,),
-            SizedBox(height: 20.0,),
+              style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              desc,
+              maxLines: 3,
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
           ],
         ),
       ),
