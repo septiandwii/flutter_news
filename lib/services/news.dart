@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_news/models/article_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,7 +7,7 @@ class News {
 
   Future<void> getNews() async {
     String url =
-        "https://newsapi.org/v2/everything?q=tesla&from=2024-12-06&sortBy=publishedAt&apiKey=d2fd3db244fe45cb8a37d328556e767c";
+        "https://newsapi.org/v2/everything?q=apple&from=2024-12-09&sortBy=publishedAt&apiKey=d2fd3db244fe45cb8a37d328556e767c";
     var response = await http.get(Uri.parse(url));
 
     var jsonData = jsonDecode(response.body);

@@ -40,7 +40,7 @@ class _CategoryNewsState extends State<CategoryNews> {
         appBar: AppBar(
           title: Text(
             widget.name,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
           elevation: 0.0,

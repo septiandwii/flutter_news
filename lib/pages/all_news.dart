@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/models/article_model.dart';
 import 'package:flutter_news/models/slider_model.dart';
 import 'package:flutter_news/pages/article_view.dart';
-import 'package:flutter_news/pages/category_news.dart';
 import 'package:flutter_news/services/news.dart';
 import 'package:flutter_news/services/slider_data.dart';
 
@@ -50,8 +49,8 @@ class _AllNewsState extends State<AllNews> {
     return Scaffold(
       appBar: AppBar(
         title:Text(
-          widget.news+" News",
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+          widget.news+"News",
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
           ),
         centerTitle: true,
         elevation: 0.0,

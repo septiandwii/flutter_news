@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                           isObscure = !isObscure;
                         });
                       },
-                      child: Icon(isObscure ? Icons.visibility : Icons.visibility_off)),
+                      child: Icon(isObscure ? Icons.visibility_off : Icons.visibility)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               if (isError)
                 const Text(
-                  "Username atau Password salah",
+                  "Username or Password Wrong!",
                   style: TextStyle(
                     color: Colors.red,
                   ),

@@ -55,13 +55,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Flutter"),
+            Text("Outland"),
             Text(
               "News",
-              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -78,7 +79,6 @@ class _HomeState extends State<Home> {
           },
           icon: const Icon(Icons.logout),
         ),
-        centerTitle: true,
         elevation: 0.0,
       ),
       body: _loading
@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                             },
                             child: Text(
                               "View All",
-                              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 16.0),
+                              style: TextStyle(color: Colors.red, fontWeight: FontWeight.w500, fontSize: 16.0),
                             ),
                           ),
                         ],
@@ -188,122 +188,12 @@ class _HomeState extends State<Home> {
                             },
                             child: Text(
                               "View All",
-                              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 16.0),
+                              style: TextStyle(color: Colors.red, fontWeight: FontWeight.w500, fontSize: 16.0),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    // SizedBox(
-                    //   height: 10.0,
-                    // ),
-                    // GestureDetector(
-                    //   onTap: () {},
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    //     child: Material(
-                    //       elevation: 3.0,
-                    //       borderRadius: BorderRadius.circular(10),
-                    //       child: Padding(
-                    //         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
-                    //         child: Row(
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           children: [
-                    //             Container(
-                    //                 child: ClipRRect(
-                    //                     borderRadius: BorderRadius.circular(10),
-                    //                     child: Image.asset(
-                    //                       "images/sports.jpg",
-                    //                       height: 120,
-                    //                       width: 120,
-                    //                       fit: BoxFit.cover,
-                    //                     ))),
-                    //             SizedBox(
-                    //               width: 8.0,
-                    //             ),
-                    //             Column(
-                    //               children: [
-                    //                 Container(
-                    //                   width: MediaQuery.of(context).size.width / 1.7,
-                    //                   child: Text(
-                    //                     "Rui Costa outsprints breakaway to win stage 15",
-                    //                     style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 17.0),
-                    //                   ),
-                    //                 ),
-                    //                 SizedBox(
-                    //                   height: 7.0,
-                    //                 ),
-                    //                 Container(
-                    //                   child: ClipRRect(
-                    //                     borderRadius: BorderRadius.circular(10),
-                    //                     child: CachedNetworkImage(
-                    //                       height: 120,
-                    //                       width: MediaQuery.of(context).size.width,
-                    //                       imageUrl: image,
-                    //                       fit: BoxFit.cover,
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    // SizedBox(
-                    //   height: 20.0,
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    //   child: Material(
-                    //     elevation: 3.0,
-                    //     borderRadius: BorderRadius.circular(10),
-                    //     child: Padding(
-                    //       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
-                    //       child: Row(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           ClipRRect(
-                    //             borderRadius: BorderRadius.circular(10),
-                    //             child: CachedNetworkImage(
-                    //               height: 120,
-                    //               width: MediaQuery.of(context).size.width,
-                    //               imageUrl: image,
-                    //               fit: BoxFit.cover,
-                    //             ),
-                    //           ),
-                    //           SizedBox(
-                    //             width: 8.0,
-                    //           ),
-                    //           Column(
-                    //             children: [
-                    //               Container(
-                    //                 width: MediaQuery.of(context).size.width / 1.7,
-                    //                 child: Text(
-                    //                   "Rui Costa outsprints breakaway to win stage 15",
-                    //                   style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 17.0),
-                    //                 ),
-                    //               ),
-                    //               SizedBox(
-                    //                 height: 7.0,
-                    //               ),
-                    //               Container(
-                    //                 width: MediaQuery.of(context).size.width / 1.7,
-                    //                 child: Text(
-                    //                   "Then a final kick to beat lennard kamna",
-                    //                   style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w500, fontSize: 15.0),
-                    //                 ),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-
                     Container(
                       child: ListView.builder(
                         shrinkWrap: true,
@@ -357,7 +247,7 @@ class _HomeState extends State<Home> {
   Widget buildIndicator() => AnimatedSmoothIndicator(
         activeIndex: activeIndex,
         count: 5,
-        effect: SlideEffect(dotWidth: 15, dotHeight: 15, activeDotColor: Colors.blue),
+        effect: SlideEffect(dotWidth: 15, dotHeight: 15, activeDotColor: Colors.red),
       );
 }
 

@@ -24,7 +24,7 @@ class _LandingPageState extends State<LandingPage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
-                  "images/science.jpg",
+                  "images/landing.png",
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 1.7,
                   fit: BoxFit.cover,
@@ -67,7 +67,7 @@ class _LandingPageState extends State<LandingPage> {
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 15.0),
-                    decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
+                    decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(30)),
                     child: const Center(
                       child: Text(
                         "Get Started",

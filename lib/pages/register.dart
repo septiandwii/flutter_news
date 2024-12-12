@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_news/pages/landing_page.dart';
 import 'package:flutter_news/pages/login.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -53,6 +54,17 @@ class RegisterPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Register'),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new), // Contoh mengganti ikon
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginPage(),
+                ),
+              );
+            },
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -73,7 +85,6 @@ class RegisterPage extends StatelessWidget {
                   style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
                 const SizedBox(height: 20),
-                // Field Email
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
@@ -124,7 +135,6 @@ class RegisterPage extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                 ),
                 const SizedBox(height: 30),
-                // Register Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -142,14 +152,18 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // Already have an account
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Already have an account? '),
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context); // Navigasi kembali ke halaman sebelumnya
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
                       },
                       child: const Text(
                         'Login',
